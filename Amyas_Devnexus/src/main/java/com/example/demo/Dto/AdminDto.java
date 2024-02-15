@@ -1,22 +1,22 @@
 package com.example.demo.Dto;
 
 public class AdminDto {
-	String Name;
+	String name;
 	String email;
 	String username;
 	String password;
 	public AdminDto(String name, String email, String username, String password) {
 		super();
-		Name = name;
+		this.name = name;
 		this.email = email;
 		this.username = username;
 		this.password = password;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public String getEmail() {
 		return email;
