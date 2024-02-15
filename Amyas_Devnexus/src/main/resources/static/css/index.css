@@ -1,0 +1,33 @@
+.custom-bg-color {
+           background-color: rgb(39, 40, 127); /* Light blue color */
+        }
+        
+.admin-panel {
+            border: 1px solid #dee2e6; /* Gray border */
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+}
+
+.admin-panel a {
+            display: block;
+            margin-bottom: 10px;
+            color: #343a40; /* Default link color */
+}
+
+.admin-panel a:hover {
+            color: #0056b3; /* Change link color on hover */
+}
+.admin-link:hover {
+    color: rgb(35, 172, 162); /* Change color on hover */
+}
+.admin-link {
+    display: block;
+    margin-bottom: 10px;
+    color: rgb(61, 96, 227);
+    text-decoration: none;
+    padding: 10px 0;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out; /* Add transition effect */
+}
