@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,13 @@ public class AdminController {
     public String index() {
         return "index"; 
     }
+	@GetMapping("/viewalladmin")
+	public String viewAllAdmin(Model model) {
+	    List<Admin> admins = adminService.getAllAdmins();
+	    model.addAttribute("admins", admins);
+	    return "viewalladmin";
+	}
+
 	@GetMapping("/adminregistraction")
 	public String adminregistration() {
 		return "adminregistraction";
