@@ -39,25 +39,22 @@
         </div>
         <div class="col-md-9">
             <div class="container mt-4">
-                <h2>All Admins</h2>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Username</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="admin : ${admins}">
-                        
-                        <td th:text="${admin.name}"></td>
-                        <td th:text="${admin.email}"></td>
-                        <td th:text="${admin.username}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <h2>Update Admins Details</h2>
+               <form th:action="@{/updateadmindetails}" method="post">
+                <div class="mb-3">
+                    <label for="adminName" class="form-label">Admin Name</label>
+                    <input type="text" class="form-control" id="adminName" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="adminEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="adminEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="adminUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="adminUsername" name="username" placeholder="Enter your username" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
             </div>
         </div>
     </div>

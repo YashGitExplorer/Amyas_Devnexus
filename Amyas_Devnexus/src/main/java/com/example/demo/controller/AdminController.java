@@ -15,18 +15,13 @@ import com.example.demo.Dto.AdminDto;
 import com.example.demo.model.Admin;
 import com.example.demo.service.AdminService;
 
-
-
-
-
-
 @Controller
 
 public class AdminController {
 	
 	@Autowired
 	AdminService adminService;
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String home() {
 		return "home";
 	}
@@ -34,13 +29,17 @@ public class AdminController {
     public String index() {
         return "index"; 
     }
+	@GetMapping("/updateadmin")
+	public String updateeadmin() {
+		return "updateadmin";
+	}
 	@GetMapping("/viewalladmin")
 	public String viewAllAdmin(Model model) {
 	    List<Admin> admins = adminService.getAllAdmins();
 	    model.addAttribute("admins", admins);
 	    return "viewalladmin";
 	}
-
+ 
 	@GetMapping("/adminregistraction")
 	public String adminregistration() {
 		return "adminregistraction";
@@ -60,6 +59,10 @@ public class AdminController {
         model.addAttribute("success", true);
         return "redirect:/index"; // Redirect to the index page after registration
     }
+//    @PostMapping("/updateadmindetails")
+//    public String updateadmin(@ModelAttribute AdminDto admindto) {
+//    
+//    }
 
 
 }
