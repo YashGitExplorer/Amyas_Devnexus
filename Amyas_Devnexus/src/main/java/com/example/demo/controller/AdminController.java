@@ -25,6 +25,10 @@ public class AdminController {
 	public String home() {
 		return "home";
 	}
+	@GetMapping("/")
+	public String homes() {
+		return "home";
+	}
 	@GetMapping("/index")
     public String index() {
         return "index"; 
@@ -63,6 +67,6 @@ public class AdminController {
 //    public String updateadmin(@ModelAttribute AdminDto admindto) {
 //    
 //    }
-
+   
 
 }
