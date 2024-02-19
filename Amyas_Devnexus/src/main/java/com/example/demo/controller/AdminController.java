@@ -54,11 +54,18 @@ public class AdminController {
         if (admin != null && admin.getPassword().equals(password)) {
             return "redirect:/index"; 
         } else {
+        	
         	return "redirect:/?error=true"; 
         }
     }
     @PostMapping("/register")
     public String register(@ModelAttribute AdminDto adminDto,Model model) {
+    	 Admin existingAdmin = adminService.findByUsername(adminDto.getUsername());
+    	    if (existingAdmin != null) {
+    	        // Admin with the same username already exists, add an error message
+    	        model.addAttribute("error", "Admin with the same username already exists");
+    	        return "adminregistraction"; // Return to the registration page with an error message
+    	    }
         adminService.save(adminDto);
         model.addAttribute("success", true);
         return "redirect:/index"; // Redirect to the index page after registration

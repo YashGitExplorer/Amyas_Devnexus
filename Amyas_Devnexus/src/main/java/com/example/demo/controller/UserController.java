@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //import com.example.demo.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+
 public class UserController {
 //	@Autowired
 //	UserService userService;
-	@GetMapping("/")
+	@GetMapping("/user")
 	public String home() {
 		return "userhome";
 	}

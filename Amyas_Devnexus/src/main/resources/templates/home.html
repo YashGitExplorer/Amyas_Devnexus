@@ -53,9 +53,11 @@
 		
         <div class="col-md-6">
 			<br><h2> Admin Login</h2><br>
-			<p th:if="${param.error}" class="error-message">Invalid username or password</p>
+			<div th:if="${param.error}" class="error-message">
+    			<p>Invalid username or password</p>
+			</div>
 			<br>
-            <form th:action="@{/login}" method="post">
+            <form  th:action="@{/login}" method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
