@@ -19,13 +19,12 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/**", "/user","/css/**","/images/**").permitAll()
+				.requestMatchers("/**", "/user","/css/**","/images/**","/userregistrationform", "/userlogin").permitAll()
 				.anyRequest().authenticated()
 			)
 			.logout((logout) -> logout.permitAll());
 
 		return http.build();
 	}
-
 }
 

@@ -18,7 +18,7 @@ public class Admin {
 	String username;
 	String password;
 	public Admin() {
-        // Default constructor
+       
     }
 	
 	public Admin( String name, String email, String username, String password) {
