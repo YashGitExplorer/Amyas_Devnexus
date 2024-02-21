@@ -33,5 +33,10 @@ public class AdminServiceImpl implements AdminService{
 	    public List<Admin> getAllAdmins() {
 	        return adminRepository.findAll();
 	    }
+	@Override
+	public void delete(Admin admin) {
+		adminRepository.delete(admin);
+	}
+	 
 
 }

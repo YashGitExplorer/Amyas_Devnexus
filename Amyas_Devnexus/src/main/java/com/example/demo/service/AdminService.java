@@ -9,4 +9,5 @@ public interface AdminService {
 	Admin save(AdminDto admindto);
 	Admin findByUsername(String username);
 	List<Admin> getAllAdmins();
+	void delete(Admin admin);
 }

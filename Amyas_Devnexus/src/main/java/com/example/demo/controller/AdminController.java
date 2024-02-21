@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.Dto.AdminDto;
 import com.example.demo.model.Admin;
+import com.example.demo.model.User;
 import com.example.demo.service.AdminService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 
@@ -39,6 +42,7 @@ public class AdminController {
 	}
 	@GetMapping("/viewalladmin")
 	public String viewAllAdmin(Model model) {
+		
 	    List<Admin> admins = adminService.getAllAdmins();
 	    model.addAttribute("admins", admins);
 	    return "viewalladmin";
@@ -48,10 +52,17 @@ public class AdminController {
 	public String adminregistration() {
 		return "adminregistraction";
 	}
+	@GetMapping("/deletadminform")
+	public String deleteadminform() {
+		return "deletadminform";
+	}
+	
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password, Model model) {
+    public String login(@RequestParam String username, @RequestParam String password, Model model,HttpSession session) {
         Admin admin = adminService.findByUsername(username);
         if (admin != null && admin.getPassword().equals(password)) {
+        	session.setAttribute("adminusername", username);
+        	session.setAttribute("adminpassword", password);
             return "redirect:/index"; 
         } else {
         	
@@ -74,6 +85,16 @@ public class AdminController {
 //    public String updateadmin(@ModelAttribute AdminDto admindto) {
 //    
 //    }
+    @PostMapping("/deletadmin")
+    public String deleteAdmin(@RequestParam String username, @RequestParam String password, Model model) {
+        Admin admin = adminService.findByUsername(username);
+        if (admin != null && admin.getPassword().equals(password)) {
+            adminService.delete(admin); 
+            return "redirect:/index"; 
+        } else {
+            return "redirect:/deletadminform?error=true"; 
+        }
+    }
    
 
 }
