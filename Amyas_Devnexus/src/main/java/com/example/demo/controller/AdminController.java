@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.Dto.AdminDto;
 import com.example.demo.model.Admin;
-import com.example.demo.model.User;
+
 import com.example.demo.service.AdminService;
 
 import jakarta.servlet.http.HttpSession;
@@ -33,7 +34,10 @@ public class AdminController {
 		return "home";
 	}
 	@GetMapping("/index")
-    public String index() {
+    public String index(Model model,HttpSession session) {
+		String username=(String) session.getAttribute("adminusername");
+		Admin admin=adminService.findByUsername(username);
+		model.addAttribute("admin",admin);
         return "index"; 
     }
 	@GetMapping("/updateadmin")
@@ -95,6 +99,22 @@ public class AdminController {
             return "redirect:/deletadminform?error=true"; 
         }
     }
+    @PostMapping("/updateadmindetails")
+    public String updateAdminDetails(HttpSession session, @RequestParam String name, @RequestParam String email, Model model) {
+        String username = (String) session.getAttribute("adminusername");
+        if (username != null) {
+            Admin updatedAdmin = adminService.updateAdminDetails(username, name, email);
+            
+            if (updatedAdmin != null) {
+                model.addAttribute("success", "Admin details updated successfully");
+            } else {
+                model.addAttribute("error", "Failed to update admin details");
+            }
+            return "redirect:/index"; // Redirect to the update admin page
+        } else {
+            model.addAttribute("error", "Session expired or unauthorized access");
+            return "redirect:/login"; // Redirect to the login page
+        }
+    }
    
-
 }

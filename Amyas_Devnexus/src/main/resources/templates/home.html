@@ -52,18 +52,18 @@
     <div class="row justify-content-center">
 		
         <div class="col-md-6">
-			<br><h2> Admin Login</h2><br>
+			<br><h2 class="fw-bold"> Admin Login</h2><br>
 			<div th:if="${param.error}" class="error-message">
     			<p>Invalid username or password</p>
 			</div>
 			<br>
             <form  th:action="@{/login}" method="post">
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
+                    <label for="username" class="form-label fw-bold">Username:</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label fw-bold">Password:</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" requried>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>

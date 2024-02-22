@@ -2,6 +2,7 @@ package com.example.demo.ServiceImpl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,16 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void delete(Admin admin) {
 		adminRepository.delete(admin);
+	}
+	@Override
+	public Admin updateAdminDetails(String username, String name, String email) {
+		 Admin admin = adminRepository.findByUsername(username);
+	        if (admin != null) {
+	            admin.setName(name);
+	            admin.setEmail(email);
+	            return adminRepository.save(admin);
+	        }
+	        return null; 
 	}
 	 
 

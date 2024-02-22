@@ -40,6 +40,12 @@
         <div class="col-md-9">
             <div class="container mt-4">
                 <h2>Update Admins Details</h2>
+                <div th:if="${success != null}" class="alert alert-success" role="alert">
+        <p th:text="${success}"></p>
+    </div>
+    <div th:if="${error}" class="alert alert-danger" role="alert">
+        <p th:text="${error}"></p>
+    </div>
                <form th:action="@{/updateadmindetails}" method="post">
                 <div class="mb-3">
                     <label for="adminName" class="form-label">Admin Name</label>
@@ -49,10 +55,7 @@
                     <label for="adminEmail" class="form-label">Email</label>
                     <input type="email" class="form-control" id="adminEmail" name="email" placeholder="Enter your email" required>
                 </div>
-                <div class="mb-3">
-                    <label for="adminUsername" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="adminUsername" name="username" placeholder="Enter your username" required>
-                </div>
+                
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
             </div>

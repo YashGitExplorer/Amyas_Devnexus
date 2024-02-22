@@ -1,9 +1,13 @@
 package com.example.demo.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -21,6 +25,14 @@ public class User {
 	String email;
 	String username;
 	String password;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	    private List<Post> posts;
+	public List<Post> getPosts() {
+		return posts;
+	}
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 	public Long getId() {
 		return id;
 	}

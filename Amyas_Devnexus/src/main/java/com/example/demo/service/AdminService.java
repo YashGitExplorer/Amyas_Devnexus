@@ -10,4 +10,5 @@ public interface AdminService {
 	Admin findByUsername(String username);
 	List<Admin> getAllAdmins();
 	void delete(Admin admin);
+	Admin updateAdminDetails(String username, String name, String email);
 }
