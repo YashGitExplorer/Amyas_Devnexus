@@ -47,6 +47,10 @@ public class UserController {
          
 		return "userprofile";
 	}
+	@GetMapping("/userpostform")
+	public String userpostform() {
+		return "userpostform";
+	}
 	 @PostMapping("/userregister")
 	    public String register(@ModelAttribute 	UserDto userDto,Model model) {
 	    	 User existingUser = userService.findByUsername(userDto.getUsername());

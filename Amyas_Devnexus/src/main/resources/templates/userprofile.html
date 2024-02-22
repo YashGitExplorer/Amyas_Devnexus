@@ -63,22 +63,52 @@
                 <!-- Your main content here -->
                 <div class="container mt-4">
                      <h1>User Profile</h1>
-                    <p>Bio: <span th:text="${user.bio}"></span></p>
-                    <p>Username: <span th:text="${user.username}"></span></p>
-                    <p>Name: <span th:text="${user.firstname} + ' ' + ${user.lastname}"></span></p>
-                    <p>Date of Birth: <span th:text="${user.date_of_birth}"></span></p>
+                    
+                    <p class="fw-bold" >Username: <span class="fw-bold"  th:text="${user.username}"></spanclass="fw-bold" ></p>
+                    <p class="fw-bold" >Name: <span class="fw-bold" th:text="${user.firstname} + ' ' + ${user.lastname}"></span></p>
+                    <p class="fw-bold" >Bio: <span class="fw-bold" th:text="${user.bio}"></span></p>
+                    <p class="fw-bold" >Date of Birth: <span class="fw-bold" th:text="${user.date_of_birth}"></span></p>
                     <button onclick="toggleForm('editDetailsForm')" class="btn btn-primary">Edit Details</button>
                     <form id="editDetailsForm" class="hidden" action="#" method="post">
-                            <input type="text" name="firstname" placeholder="First Name" th:value="${user.firstname}"><br>
-                        <input type="text" name="lastname" placeholder="Last Name" th:value="${user.lastname}">
-                        <input type="text" name="dateOfBirth" placeholder="Date of Birth" th:value="${user.date_of_birth}">
-                        <input type="text" name="bio" placeholder="Bio" th:value="${user.bio}">
+						<div class="mb-3">
+                    		<label for="adminName" class="form-label">First Name:</label>
+                   			 <input type="text" class="form-control" id="adminName" name="firstname" placeholder="Enter your name" th:value="${user.firstname}">
+               			</div>
+               			<div class="mb-3">
+                   			 <label for="lastName" class="form-label">Last Name:</label>
+                   			 <input type="text" class="form-control" id="lastName" name="lastname" placeholder="Enter your last name" th:value="${user.lastname}">
+                		</div>
+               			 <div class="mb-3">
+               			     <label for="userphone" class="form-label">Phone no.:</label>
+                  			  <input type="number" class="form-control" id="userphone" name="phonenumber" placeholder="Enter your phone number" th:value="${user.phonenumber}">
+               			 </div>
+              			  <div class="mb-3">
+                			    <label for="userEmail" class="form-label">Email:</label>
+                    			<input type="email" class="form-control" id="userEmail" name="email" placeholder="Enter your email" th:value="${user.email}">
+                		  </div>
+                		  <div class="mb-3">
+                			    <label for="date_of_birth" class="form-label">Date of birth:</label>
+                    			<input type="text" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Enter your DOB" "${user.date_of_birth}">
+                		  </div>
+                		  <div class="mb-3">
+                		  	 <label for="bio" class="form-label">Bio:</label>
+                   			 <input type="text" class="form-control" id="bio" name="lastname" placeholder="Enter your bio" "${user.bio}">
+                		</div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <br><br>
                     </form>
+    
                     <button onclick="toggleForm('updatePasswordForm')" class="btn btn-primary">Update Password</button>
                     <!-- Update Password Form -->
                     <form id="updatePasswordForm" class="hidden" action="#" method="post">
-                        <input type="password" name="password" placeholder="Enter new password">
+						 <div class="mb-3">
+                    <label for="useroldPassword" class="form-label">Old Password:</label>
+                    <input type="password" class="form-control" id="useroldPassword" name="useroldPassword" placeholder="Enter your old password" required>
+                    </div>
+                        <div class="mb-3">
+                    <label for="userPassword" class="form-label">New Password:</label>
+                    <input type="password" class="form-control" id="userPassword" name="password" placeholder="Enter your new password" required>
+                    </div>
                         <button type="submit" class="btn btn-primary">Update Password</button>
                     </form>
                 
