@@ -48,6 +48,10 @@ public class UserController {
 	public String home() {
 		return "userhome";
 	}
+	@GetMapping("/searchuserform")
+	public String searchuserform() {
+		return "searchuserform";
+	}
 	@GetMapping("/userregistrationform")
 	public String userregister() {
 		return "userregistrationform";
@@ -60,7 +64,7 @@ public class UserController {
 		List<Post> posts = postService.getAllPosts(); 
 		posts.forEach(post -> post.setImageBase64(Base64.getEncoder().encodeToString(post.getImage())));
         model.addAttribute("posts", posts); 
-       // List<Comments> comments = commentsService.getAllPosts(); 
+      
 		return "userindex";
 	}
 	@GetMapping("/profilecontroller")

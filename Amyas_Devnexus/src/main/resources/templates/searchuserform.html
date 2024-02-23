@@ -48,24 +48,14 @@
             <div class="col-md-9">
                 <!-- Your main content here -->
                 <div class="container mt-4">
-                    <h2>Create New Post</h2>
-   					 <form  enctype="multipart/form-data" th:action="@{/savePost}" method="post">
+                    <h2>Search user</h2>
+   					 <form  th:action="@{/searchuser}" method="post">
 							<input type="hidden" name="userId" id="userIdInput"  th:value="${user.id}" >
       					  <div class="form-group">
-         					   <label for="title">Title:</label>
-         					   <input type="text" class="form-control" id="title" name="title" required>
-        					</div>
-       					 <div class="form-group">
-        				    <label for="content">Content:</label>
-        				    <textarea class="form-control" id="content" name="content" rows="2" required></textarea>
-       					 </div>
-       					 <div class="form-group">
-          					  <label for="image">Image:</label>
-          					  <br>
-         				   <input type="file" class="form-control-file" id="image" name="image">
-       					 </div>
-       					 <br>
-       				 <button type="submit" class="btn btn-primary">Submit</button>
+         					   <label for="title">Enter Username:</label>
+         					   <input type="text" class="form-control" id="search" name="search" required>
+        					</div> 
+       				 <button type="submit" class="btn btn-primary">Search</button>
     			</form>
                 
                 </div>
