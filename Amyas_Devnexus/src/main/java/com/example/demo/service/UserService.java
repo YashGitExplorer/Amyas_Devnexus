@@ -10,6 +10,8 @@ public interface UserService {
 
 	User save(UserDto userdto);
 
+	User findbyId(long userId);
+
 //	User getCurrentUser();
 
 }

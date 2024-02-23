@@ -1,11 +1,16 @@
+
 package com.example.demo.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -16,13 +21,32 @@ public class Post {
 
     private String title;
     private String content;
+    int likes;
 
     @Lob
     private byte[] image;
 
     @ManyToOne
     private User user;
-    @Transient
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comments> comments;
+    public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public List<Comments> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
+
+	@Transient
     private String imageBase64;
 	public String getImageBase64() {
 		return imageBase64;

@@ -6,7 +6,21 @@
 		<link rel="icon" href="images/logo2.png" type="image/x-icon">
 		<link rel="stylesheet" href="/css/index.css">
     <link rel="shortcut icon" href="images/logo2.png" type="image/x-icon">
-	
+	<script>
+        function toggleForm(formId) {
+            var form = document.getElementById(formId);
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+            } else {
+                form.classList.add('hidden');
+            }
+        }
+    </script>
+    <style>
+		.hidden {
+    display: none;
+}
+	</style>
 		
 	</head>
 <body style="background: linear-gradient(0.25turn, rgb(207, 211, 211), rgb(78, 135, 228), rgb(50, 65, 189));  ">
@@ -14,7 +28,6 @@
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- 
 
 
 <nav class="navbar navbar-expand-lg navbar-dark custom-bg-color">
@@ -56,12 +69,36 @@
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${post.title}"></h5>
                                 <p class="card-text" th:text="${post.content}"></p>
+                                
                                 <img th:src="'data:image/jpeg;base64,' + ${post.imageBase64}" class="card-img-top"
                                 alt="Post Image" style="max-width: 400px; max-height: 400px;">
                                 <br>
                                 <br>
-                                <button type="button" class="btn btn-primary">Like</button>
-                                <button type="button" class="btn btn-secondary">Comment</button>
+                                 <form id="likeForm" th:action="@{/likePost}" method="post">
+    							<input type="hidden" name="postId" id="postIdInput"  th:value="${post.id}" >
+  
+    								<button type="submit" class="btn btn-primary btn-like" >
+     							   Like <span class="like-count" th:text="${post.likes}"></span>
+   								 </button>
+   								 <button type="button" onclick="toggleForm('commentForm')" class="btn btn-secondary" >Comment</button>
+								</form>
+                                
+                                <form id="commentForm" class="hidden" th:action="@{/commentPost}" method="post">
+									<br>
+                        			<div class="mb-3">
+                        			<input type="hidden" name="postId" id="postIdInput"  th:value="${post.id}" >
+                  						  <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter comment" required>
+                  						  
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">comment</button>
+                                   <div class="previous-comments mt-3">
+                                    <h5>Previous Comments:</h5>
+                                    <ul>
+                                        <li th:each="comment : ${post.comments}" th:text="${comment.content}"></li>
+                                    </ul>
+                                </div>
+                                </form>
+                                
                             </div>
                         </div>
                         <br>

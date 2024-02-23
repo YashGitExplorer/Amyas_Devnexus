@@ -1,5 +1,7 @@
 package com.example.demo.ServiceImpl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Dto.UserDto;
 import com.example.demo.model.Admin;
+import com.example.demo.model.Post;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
@@ -34,6 +37,12 @@ public class UserServiceImpl implements UserService{
 	        user.setPassword(userdto.getPassword());
 		
 		return userRepository.save(user);
+	}
+
+	@Override
+	public User findbyId(long userId) {
+		Optional<User> userOptional = userRepository.findById(userId);
+        return userOptional.orElse(null);
 	}
 
 }
