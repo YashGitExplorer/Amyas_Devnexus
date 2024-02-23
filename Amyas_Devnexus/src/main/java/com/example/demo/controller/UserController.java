@@ -150,5 +150,20 @@ public class UserController {
 	     }
 	     return "redirect:/userindex";
 	 }
-	
+	 @PostMapping("/searchuser")
+	 public String searchUser(@RequestParam("search") String searchTerm, Model model, HttpSession session) {
+	     User foundUser = userService.findByUsername(searchTerm);
+	     session.setAttribute("foundUser", foundUser);
+	     return "redirect:/userdetails"; 
+	 }
+
+@GetMapping("/userdetails")
+public String userDetails(HttpSession session, Model model) {
+    User foundUser = (User) session.getAttribute("foundUser");
+    if (foundUser == null) {    
+        return "userNotFound"; 
+    }
+    model.addAttribute("user", foundUser);
+    return "userDetails"; 
+}
 }

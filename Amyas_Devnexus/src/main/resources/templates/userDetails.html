@@ -46,23 +46,11 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <!-- Your main content here -->
-                <div class="container mt-4">
-                    <h2>Search user</h2>
-   					 <form  th:action="@{/searchuser}" method="post">
-							
-      					  <div class="form-group">
-         					   <label for="title" class="fw-bold">Enter Username:</label>
-         					   <input type="text" class="form-control" id="search" name="search" placeholder="Eneter username" required>
-        					</div> 
-        					<br>
-       				 <button type="submit" class="btn btn-primary">Search</button>
-    			</form>
-                
-                </div>
-            </div>
-            
-        </div>
+              <div class="container mt-4">
+                     <h3> User with <span   th:text="${user.username}"> </h3>
+                    <p class="fw-bold" > Full Name: <span class="fw-bold" th:text="${user.firstname} + ' ' + ${user.lastname}"></span></p>
+                    </div>
+            </div>        
     </div>
       
 </body>
