@@ -55,8 +55,8 @@
                         <li><a href="profilecontroller" class="admin-link">Profile</a></li>
                         <li><a href="searchuserform" class="admin-link">Search</a></li>
                          <li><a href="userpostform" class="admin-link">Post</a></li>
-                     <!--    <li><a href="#" class="admin-link">Delete Admin</a></li> -->
-                        <li><a href="userhome" class="admin-link">Logout</a></li>
+                       <li><a href="deletepost" class="admin-link">Delete Post</a></li> 
+                        <li><a href="user" class="admin-link">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,13 +64,14 @@
                 <!-- Your main content here -->
                 <div class="container mt-4">
                      <h1>User Profile</h1>
-                    
+                    <p class="fw-bold">Connections: <span class="fw-bold" th:text="${connectionCount}"></span></p>
+
                     <p class="fw-bold" >Username: <span class="fw-bold"  th:text="${user.username}"></spanclass="fw-bold" ></p>
                     <p class="fw-bold" >Name: <span class="fw-bold" th:text="${user.firstname} + ' ' + ${user.lastname}"></span></p>
                     <p class="fw-bold" >Bio: <span class="fw-bold" th:text="${user.bio}"></span></p>
                     <p class="fw-bold" >Date of Birth: <span class="fw-bold" th:text="${user.date_of_birth}"></span></p>
                     <button onclick="toggleForm('editDetailsForm')" class="btn btn-primary">Edit Details</button>
-                    <form id="editDetailsForm" class="hidden" action="#" method="post">
+                    <form id="editDetailsForm" class="hidden" th:action="@{/editUserDetails}"  method="post">
 						<div class="mb-3">
                     		<label for="adminName" class="form-label">First Name:</label>
                    			 <input type="text" class="form-control" id="adminName" name="firstname" placeholder="Enter your name" th:value="${user.firstname}">
@@ -101,7 +102,7 @@
     
                     <button onclick="toggleForm('updatePasswordForm')" class="btn btn-primary">Update Password</button>
                     <!-- Update Password Form -->
-                    <form id="updatePasswordForm" class="hidden" action="#" method="post">
+                    <form id="updatePasswordForm" class="hidden"  th:action="@{/updatePassword}" method="post">
 						 <div class="mb-3">
                     <label for="useroldPassword" class="form-label">Old Password:</label>
                     <input type="password" class="form-control" id="useroldPassword" name="useroldPassword" placeholder="Enter your old password" required>

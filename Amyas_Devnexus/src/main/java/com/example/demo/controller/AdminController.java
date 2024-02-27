@@ -25,6 +25,7 @@ public class AdminController {
 	
 	@Autowired
 	AdminService adminService;
+	
 	@GetMapping("/home")
 	public String home() {
 		return "home";
@@ -51,6 +52,7 @@ public class AdminController {
 	    model.addAttribute("admins", admins);
 	    return "viewalladmin";
 	}
+	
  
 	@GetMapping("/adminregistraction")
 	public String adminregistration() {
@@ -85,10 +87,8 @@ public class AdminController {
         model.addAttribute("success", true);
         return "redirect:/index"; // Redirect to the index page after registration
     }
-//    @PostMapping("/updateadmindetails")
-//    public String updateadmin(@ModelAttribute AdminDto admindto) {
-//    
-//    }
+
+
     @PostMapping("/deletadmin")
     public String deleteAdmin(@RequestParam String username, @RequestParam String password, Model model) {
         Admin admin = adminService.findByUsername(username);

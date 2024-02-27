@@ -31,35 +31,34 @@
                 <ul class="list-unstyled">
                     <li><a href="adminregistraction" class="admin-link">Add Admin</a></li>
                     <li><a href="viewalladmin" class="admin-link">View All Admins</a></li>
-                     <li><a href="viewalluser" class="admin-link">View All Users</a></li>
+                    <li><a href="viewalluser" class="admin-link">View All Users</a></li>
                     <li><a href="updateadmin" class="admin-link">Update Admin</a></li>
                     <li><a href="deletadminform" class="admin-link">Delete Admin</a></li>
-                    <li><a href="deleteuserform" class="admin-link">Delete User</a></li>
+                       <li><a href="deleteuserform" class="admin-link">Delete User</a></li> 
                     <li><a href="home" class="admin-link">Logout</a></li>
                 </ul>
             </div>
         </div>
         <div class="col-md-9">
             <div class="container mt-4">
-                <h2>Update Admins Details</h2>
-                <div th:if="${success != null}" class="alert alert-success" role="alert">
-        <p th:text="${success}"></p>
-    </div>
-    <div th:if="${error}" class="alert alert-danger" role="alert">
-        <p th:text="${error}"></p>
-    </div>
-               <form th:action="@{/updateadmindetails}" method="post">
-                <div class="mb-3">
-                    <label for="adminName" class="form-label">Admin Name</label>
-                    <input type="text" class="form-control" id="adminName" name="name" placeholder="Enter your name" required>
-                </div>
-                <div class="mb-3">
-                    <label for="adminEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="adminEmail" name="email" placeholder="Enter your email" required>
-                </div>
-                
-                <button type="submit" class="btn btn-primary">Update</button>
-            </form>
+                <h2>All User</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                     
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.firstname}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.username}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

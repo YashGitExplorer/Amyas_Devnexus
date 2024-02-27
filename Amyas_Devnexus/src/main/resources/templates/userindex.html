@@ -54,8 +54,8 @@
                         <li><a href="profilecontroller" class="admin-link">Profile</a></li>
                         <li><a href="searchuserform" class="admin-link">Search</a></li>
                          <li><a href="userpostform" class="admin-link">Post</a></li>
-                     <!--    <li><a href="#" class="admin-link">Delete Admin</a></li> -->
-                        <li><a href="userhome" class="admin-link">Logout</a></li>
+                       <li><a href="deletepost" class="admin-link">Delete Post</a></li> 
+                        <li><a href="user" class="admin-link">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -76,14 +76,12 @@
                                 <br>
                                  <form id="likeForm" th:action="@{/likePost}" method="post">
     							<input type="hidden" name="postId" id="postIdInput"  th:value="${post.id}" >
-  
     								<button type="submit" class="btn btn-primary btn-like" >
      							   Like <span class="like-count" th:text="${post.likes}"></span>
    								 </button>
    								 <button type="button" onclick="toggleForm('commentForm')" class="btn btn-secondary" >Comment</button>
 								</form>
-                                
-                                <form id="commentForm" class="hidden" th:action="@{/commentPost}" method="post">
+								<form id="commentForm" class="hidden" th:action="@{/commentPost}" method="post">
 									<br>
                         			<div class="mb-3">
                         			<input type="hidden" name="postId" id="postIdInput"  th:value="${post.id}" >
@@ -98,7 +96,6 @@
                                     </ul>
                                 </div>
                                 </form>
-                                
                             </div>
                         </div>
                         <br>

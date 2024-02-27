@@ -1,5 +1,6 @@
 package com.example.demo.ServiceImpl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.example.demo.Dto.UserDto;
 import com.example.demo.model.Admin;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
+
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 
@@ -19,6 +21,7 @@ import com.example.demo.service.UserService;
 public class UserServiceImpl implements UserService{
 	@Autowired
 	UserRepository userRepository;
+
 
 	@Override
 	public User findByUsername(String username) {
@@ -45,4 +48,44 @@ public class UserServiceImpl implements UserService{
         return userOptional.orElse(null);
 	}
 
+	@Override
+	public void delete(User user) {
+		userRepository.delete(user);
+		
+	}
+
+	@Override
+	public List<User> getAlluser() {
+		
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User updateUserDetails(String username, UserDto userDto) {
+		User existingUser = findByUsername(username);
+        if (existingUser != null) {
+            existingUser.setFirstname(userDto.getFirstname());
+            existingUser.setLastname(userDto.getLastname());
+            existingUser.setBio(userDto.getBio());
+            existingUser.setDate_of_birth(userDto.getDate_of_birth());
+            return userRepository.save(existingUser);
+        }
+        return null;
+	}
+
+	@Override
+	public boolean updatePassword(String username, String useroldPassword, String password) {
+		User user = findByUsername(username);
+        if (user != null && user.getPassword().equals(useroldPassword)) {
+            user.setPassword(password); 
+            userRepository.save(user); 
+            return true;
+        }
+        return false;
+	}
+
+	
+	
+
+	
 }

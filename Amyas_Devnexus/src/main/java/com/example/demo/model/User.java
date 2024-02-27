@@ -27,6 +27,14 @@ public class User {
 	String password;
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	    private List<Post> posts;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserConnection> connections;
+	public List<UserConnection> getConnections() {
+		return connections;
+	}
+	public void setConnections(List<UserConnection> connections) {
+		this.connections = connections;
+	}
 	public List<Post> getPosts() {
 		return posts;
 	}
