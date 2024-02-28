@@ -79,13 +79,12 @@ public class AdminController {
     public String register(@ModelAttribute AdminDto adminDto,Model model) {
     	 Admin existingAdmin = adminService.findByUsername(adminDto.getUsername());
     	    if (existingAdmin != null) {
-    	        // Admin with the same username already exists, add an error message
     	        model.addAttribute("error", "Admin with the same username already exists");
-    	        return "adminregistraction"; // Return to the registration page with an error message
+    	        return "adminregistraction"; 
     	    }
         adminService.save(adminDto);
         model.addAttribute("success", true);
-        return "redirect:/index"; // Redirect to the index page after registration
+        return "redirect:/index"; 
     }
 
 
@@ -110,10 +109,10 @@ public class AdminController {
             } else {
                 model.addAttribute("error", "Failed to update admin details");
             }
-            return "redirect:/index"; // Redirect to the update admin page
+            return "redirect:/index"; 
         } else {
             model.addAttribute("error", "Session expired or unauthorized access");
-            return "redirect:/login"; // Redirect to the login page
+            return "redirect:/login"; 
         }
     }
    

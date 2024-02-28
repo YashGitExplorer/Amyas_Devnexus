@@ -143,7 +143,7 @@ public class UserController {
 	            return "redirect:/userindex"; 
 	        } else {
 	        	
-	        	return "redirect:/?error=true"; 
+	        	return "redirect:/user?error=true"; 
 	        }
 	    }
 	 @PostMapping("/savePost")

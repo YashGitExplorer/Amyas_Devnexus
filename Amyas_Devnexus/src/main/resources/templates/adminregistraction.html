@@ -9,21 +9,21 @@
 	<style>
 		.error-message {
     	color: red;
-    	background-color: #ffe6e6; /* Light red background */
-   		 padding: 10px; /* Add padding for spacing */
-   		 border: 1px solid #ffcccc; /* Add border */
-   		 border-radius: 5px; /* Add rounded corners */
+    	background-color: #ffe6e6; 
+   		 padding: 10px; 
+   		 border: 1px solid #ffcccc; 
+   		 border-radius: 5px; 
 		}
 	</style>
 		<script th:inline="javascript">
-        /* JavaScript function to hide the error message after 5 seconds */
+       
         function hideErrorMessage() {
             setTimeout(function() {
                 var errorMessage = document.getElementById('error-message');
-                errorMessage.style.display = 'none'; // Hide the error message
-            }, 5000); // 5000 milliseconds = 5 seconds
+                errorMessage.style.display = 'none'; 
+            }, 5000); 
         }
-        /* Call the function when the page is loaded */
+        
         document.addEventListener('DOMContentLoaded', function() {
             hideErrorMessage();
         });
@@ -62,7 +62,7 @@
             </div>
             <br>
             <div th:if="${error != null}" id="error-message" class="error-message">
-        <p th:text="${error}"></p> <!-- Display the error message -->
+        <p th:text="${error}"></p> 
     </div><br>
             <form th:action="@{/register}" method="post">
                 <div class="mb-3">
